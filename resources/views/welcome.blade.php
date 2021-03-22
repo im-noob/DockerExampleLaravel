@@ -22,5 +22,8 @@
     </head>
     <body class="antialiased">
         <h1>Hello Docker</h1>
+        @php
+            dd(\App\Models\User::all());
+        @endphp
     </body>
 </html>
