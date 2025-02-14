@@ -3,7 +3,7 @@ name: Test & Deploy to Production
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   laravel-tests:
@@ -12,14 +12,17 @@ jobs:
       mysql:
         image: mysql:8
         env:
-          MYSQL_DATABASE: test_database  # Replace with your database name
-          MYSQL_USER: test_user          # Replace with your database user
-          MYSQL_PASSWORD: test_password  # Replace with your database password
-          MYSQL_ROOT_PASSWORD: root_password # Root password
+          MYSQL_DATABASE: test_database
+          MYSQL_USER: test_user
+          MYSQL_PASSWORD: test_password
+          MYSQL_ROOT_PASSWORD: root_password
         ports:
           - 3306:3306
-        # Ensure MySQL is ready before running tests
-        options: --health-cmd="mysqladmin ping --host=mysql --user=root --password=root_password" --health-interval=5s --health-timeout=3s --health-retries=5
+        options: >-
+          --health-cmd="mysqladmin ping --host=mysql --user=root --password=root_password"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
 
     steps:
 
