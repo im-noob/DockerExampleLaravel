@@ -55,7 +55,7 @@ jobs:
           sed -i '/^DB_USERNAME=/d' .env
           sed -i '/^DB_PASSWORD=/d' .env
           echo "DB_CONNECTION=mysql" >> .env
-          echo "DB_HOST=mysql" >> .env
+          echo "DB_HOST=127.0.0.1" >> .env
           echo "DB_PORT=3306" >> .env
           echo "DB_DATABASE=test_database" >> .env
           echo "DB_USERNAME=test_user" >> .env
